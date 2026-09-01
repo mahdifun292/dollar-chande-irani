@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>دلار چنده ایرانی!</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Tahoma, Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at 20% 20%, #243b55 0%, transparent 35%),
+                radial-gradient(circle at 80% 80%, #141e30 0%, transparent 35%),
+                #080d18;
+
+            color: white;
+
+            overflow: hidden;
+        }
+
+        .background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.18;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 250px;
+            height: 250px;
+            background: #00d4ff;
+            top: -80px;
+            left: -70px;
+        }
+
+        .circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: #7b2cff;
+            bottom: -120px;
+            right: -100px;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            background: #00ff9d;
+            top: 45%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-25px) scale(1.08);
+            }
+        }
+
+        .container {
+            width: min(92%, 500px);
+        }
+
+        .card {
+            padding: 35px 25px;
+
+            border-radius: 28px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.45),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+
+            text-align: center;
+
+            animation: appear 0.8s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 22px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 38px;
+
+            background: linear-gradient(
+                135deg,
+                #00d4ff,
+                #7b2cff
+            );
+
+            box-shadow:
+                0 10px 35px rgba(0, 212, 255, 0.3);
+
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.06);
+            }
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: 27px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #8deaff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            margin-top: 10px;
+
+            color: #aeb8c9;
+
+            font-size: 14px;
+        }
+
+        .price-box {
+            margin: 30px 0 20px;
+
+            padding: 25px 15px;
+
+            border-radius: 22px;
+
+            background: rgba(0, 0, 0, 0.18);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .label {
+            color: #9ca9bd;
+            font-size: 14px;
+        }
+
+        #price {
+            margin-top: 12px;
+
+            font-size: clamp(32px, 10vw, 48px);
+
+            font-weight: bold;
+
+            direction: ltr;
+
+            letter-spacing: 1px;
+
+            background: linear-gradient(
+                90deg,
+                #00e5ff,
+                #ffffff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            transition: transform 0.3s ease;
+        }
+
+        #price.updated {
+            animation: priceUpdate 0.5s ease;
+        }
+
+        @keyframes priceUpdate {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 20px;
+
+            color: #9ca9bd;
+
+            font-size: 13px;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: #00e676;
+
+            box-shadow: 0 0 12px #00e676;
+
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.35;
+            }
+        }
+
+        .footer {
+            margin-top: 25px;
+
+            color: #6f7b8e;
+
+            font-size: 11px;
+        }
+
+        .loading {
+            animation: loading 1s infinite alternate;
+        }
+
+        @keyframes loading {
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="logo">
+                💵
+            </div>
+
+            <h1>
+                دلار چنده ایرانی!
+            </h1>
+
+            <div class="subtitle">
+                قیمت لحظه‌ای دلار آزاد
+            </div>
+
+            <div class="price-box">
+
+                <div class="label">
+                    قیمت دلار
+                </div>
+
+                <div id="price" class="loading">
+                    در حال دریافت...
+                </div>
+
+            </div>
+
+            <div class="status">
+
+                <span class="dot"></span>
+
+                <span id="status">
+                    در حال اتصال به TGJU...
+                </span>
+
+            </div>
+
+            <div class="footer">
+                منبع قیمت: TGJU
+                <br>
+                بروزرسانی خودکار هر ۳۰ ثانیه
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        async function getDollar() {
+
+            const priceElement =
+                document.getElementById("price");
+
+            const statusElement =
+                document.getElementById("status");
+
+            try {
+
+                statusElement.textContent =
+                    "در حال دریافت قیمت...";
+
+                const response =
+                    await fetch("/api/dollar", {
+                        cache: "no-store"
+                    });
+
+                const data =
+                    await response.json();
+
+                if (!data.success) {
+                    throw new Error(
+                        data.error || "Unknown error"
+                    );
+                }
+
+                let price =
+                    Number(
+                        String(data.price)
+                            .replace(/,/g, "")
+                            .trim()
+                    );
+
+                if (isNaN(price)) {
+                    throw new Error(
+                        "Invalid price"
+                    );
+                }
+
+                // Convert Rial → Toman
+                price = Math.floor(price / 10);
+
+                priceElement.classList.remove(
+                    "loading"
+                );
+
+                priceElement.classList.remove(
+                    "updated"
+                );
+
+                void priceElement.offsetWidth;
+
+                priceElement.classList.add(
+                    "updated"
+                );
+
+                priceElement.textContent =
+                    price.toLocaleString("fa-IR")
+                    + " تومان";
+
+                statusElement.textContent =
+                    "آخرین بروزرسانی از TGJU";
+
+            }
+
+            catch (error) {
+
+                priceElement.classList.remove(
+                    "loading"
+                );
+
+                priceElement.textContent =
+                    "خطا";
+
+                statusElement.textContent =
+                    "دریافت قیمت ناموفق بود";
+
+                console.error(error);
+            }
+        }
+
+
+        getDollar();
+
+        // Update every 30 seconds
+
+        setInterval(
+            getDollar,
+            30000
+        );
+
+    </script>
+
+</body>
+
+</html>
